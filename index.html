@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ceb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Simple Bisaya congruence equation solver for students." />
+  <title>Bimboy Math — Congruence Solver</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">BIMBOY MATH • BISAYA</div>
+      <h1>Congruence Equation Solver</h1>
+      <p>Isulod ang equation. Ipakita nato ang pinakasayon nga steps — mubo, klaro, ug pwede i-drag para practice.</p>
+    </header>
+
+    <section class="card input-card" aria-labelledby="solve-title">
+      <h2 id="solve-title">1. Isulod ang equation</h2>
+      <label class="sr-only" for="equation">Congruence equation</label>
+      <div class="equation-row">
+        <input id="equation" autocomplete="off" spellcheck="false" value="9x ≡ 21 mod 30" placeholder="Pananglitan: 9x ≡ 21 mod 30" />
+        <button id="solveBtn" class="primary">Solve</button>
+      </div>
+      <p class="tiny">Pwede pud: <strong>9x = 21 mod 30</strong> o <strong>x ≡ 2 mod 3</strong>.</p>
+      <div class="examples" aria-label="Example equations">
+        <button class="chip" data-eq="x ≡ 2 mod 3">x ≡ 2 mod 3</button>
+        <button class="chip" data-eq="9x ≡ 21 mod 30">9x ≡ 21 mod 30</button>
+        <button class="chip" data-eq="18x ≡ 30 mod 42">18x ≡ 30 mod 42</button>
+        <button class="chip" data-eq="6x ≡ 15 mod 21">6x ≡ 15 mod 21</button>
+      </div>
+      <p id="error" class="error" role="alert" hidden></p>
+    </section>
+
+    <section id="answerSection" class="results" hidden>
+      <div class="result-topline">
+        <div>
+          <div class="eyebrow">SOLUTION</div>
+          <h2 id="prettyEquation">9x ≡ 21 (mod 30)</h2>
+        </div>
+        <button id="practiceBtn" class="secondary">🎯 Practice: Shuffle Steps</button>
+      </div>
+
+      <div id="steps" class="steps" aria-live="polite"></div>
+
+      <div id="practiceActions" class="practice-actions" hidden>
+        <button id="checkBtn" class="primary">Check Order</button>
+        <button id="resetOrderBtn" class="secondary">Show Correct Order</button>
+        <span id="orderMessage" class="order-message"></span>
+      </div>
+
+      <section class="card final-card">
+        <div class="final-label">⭐ BEST ALGEBRAIC ANSWER</div>
+        <div id="bestAnswer" class="best-answer"></div>
+        <p id="kMeaning" class="k-meaning">Ang <strong>k</strong> mahimong bisan unsang integer: … −2, −1, 0, 1, 2 …</p>
+        <hr />
+        <div class="also-label">✅ CORRECT EXAMPLES PUD</div>
+        <div id="examplesAnswer" class="examples-answer"></div>
+        <p class="tiny">Pareho silang sakto. Ang algebraic answer lang ang pinakamaayo kay apil na niya <strong>tanang possible answers</strong>.</p>
+      </section>
+    </section>
+
+    <section class="card mini-lesson">
+      <h2>Pinakasimple nga idea</h2>
+      <p><strong>a x ≡ b (mod n)</strong> nagpasabot: pangita ug <strong>x</strong> nga ang <strong>ax</strong> ug <strong>b</strong> pareho ug remainder kung divide by <strong>n</strong>.</p>
+      <p class="tiny">Version 1: congruence equations lang. Sunod puwede nato dugangan ug linear equations, fractions, geometry, ug uban pa.</p>
+    </section>
+  </main>
+
+  <template id="stepTemplate">
+    <article class="step-card" draggable="true">
+      <div class="drag-handle" title="Drag">⋮⋮</div>
+      <div class="step-content">
+        <div class="step-title"></div>
+        <div class="step-main"></div>
+        <div class="step-note"></div>
+      </div>
+      <div class="move-buttons" aria-label="Move step">
+        <button class="move-up" title="Move up">↑</button>
+        <button class="move-down" title="Move down">↓</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
